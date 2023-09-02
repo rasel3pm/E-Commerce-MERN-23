@@ -30,9 +30,9 @@ router.get("/CreateCartList", ProductController.CreateCartList);
 router.get("/RemoveCartList", ProductController.RemoveCartList);
 
 // // User
-router.get("/UserLogout", UserController.UserLogin);
+router.post("/UserLogin/:email", UserController.UserLogin);
+router.post("/VerifyLogin/:email/:otp", UserController.VerifyLogin);
 router.get("/UserLogout", UserController.UserLogout);
-router.get("/VerifyLogin", UserController.VerifyLogin);
 
 // // Profile
 router.get("/CreateProfile", ProfileController.CreateProfile);

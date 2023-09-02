@@ -1,3 +1,4 @@
+const ProductSliederModel = require("../models/ProductSliederModel");
 exports.SliderList = async (req, res) => {
   // 20
   return res.status(200).json({

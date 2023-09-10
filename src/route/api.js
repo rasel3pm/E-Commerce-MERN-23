@@ -32,20 +32,17 @@ router.get("/RemoveCartList", ProductController.RemoveCartList);
 // // User
 router.post("/UserLogin/:email", UserController.UserLogin);
 router.post("/VerifyLogin/:email/:otp", UserController.VerifyLogin);
-router.get("/UserLogout", UserController.UserLogout);
+// router.get("/UserLogout", UserController.UserLogout);
 
 // // Profile
-router.get("/CreateProfile", ProfileController.CreateProfile);
+router.post("/CreateProfile",AuthVerification, ProfileController.CreateProfile);
 router.get("/ReadProfile", AuthVerification, ProfileController.ReadProfile);
 router.get("/UpdateProfile", AuthVerification, ProfileController.UpdateProfile);
 
 // // Invoice
 router.get("/InvoiceCreate", AuthVerification, InvoiceController.InvoiceCreate);
 router.get("/InvoiceList", AuthVerification, InvoiceController.InvoiceList);
-router.get(
-  "/InvoiceProductList",
-  AuthVerification,
-  InvoiceController.InvoiceProductList
+router.get("/InvoiceProductList", AuthVerification,InvoiceController.InvoiceProductList
 );
 router.get("/PaymentSuccess", InvoiceController.PaymentSuccess);
 router.get("/PaymentCancel", InvoiceController.PaymentCancel);

@@ -1,11 +1,11 @@
+const {UserOTP,UserVerify} = require("../services/UserService");
 
-const {UserOtp,UserVerify} = require("../services/UserService");
-exports.UserLogin = async (req, res) => {
-  let result = await UserOtp(req)
+exports.UserLogin=async (req,res)=>{
+  let result=  await UserOTP(req)
   return res.status(200).json(result)
-};
+}
 
-exports.VerifyLogin = async (req, res) => {
-  let result = await UserVerify(req)
+exports.VerifyLogin=async (req,res)=>{
+  let result=  await UserVerify(req)
   return res.status(200).json(result)
-};
+}

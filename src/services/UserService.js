@@ -1,8 +1,7 @@
 const UserModel = require("../models/UserModel");
 const ProfileModel = require("../models/ProfileModel");
-const SendEmailUtility = require("../utility/SendEmail");
+const SendEmailUtility = require("../utility/SendMail");
 const {EncodeToken} = require("../utility/TokenHelper");
-
 const UserOTP = async (req)=>{
     try{
         let email=req.params.email;
@@ -41,8 +40,6 @@ const UserVerify = async (req)=>{
     }
 }
 
-
-
 const UserProfileSave = async (req)=>{
     try{
         let user_id=req.headers.id;
@@ -55,8 +52,6 @@ const UserProfileSave = async (req)=>{
         return {status:"fail", message:"Something Went Wrong"}
     }
 }
-
-
 const UserProfileDetails = async (req)=>{
     try{
         let user_id=req.headers.id;

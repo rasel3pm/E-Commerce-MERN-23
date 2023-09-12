@@ -17,7 +17,7 @@ const DataSchema = mongoose.Schema(
             type: String,
             required: true,
         },
-        product_id:{
+        productID:{
             type:mongoose.Schema.Types.ObjectId
         }
     },

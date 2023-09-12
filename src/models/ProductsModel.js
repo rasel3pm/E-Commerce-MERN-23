@@ -5,7 +5,7 @@ const DataSchema = mongoose.Schema(
             type: String,
             required: true,
         },
-        short_des: {
+        shortDes: {
             type: String,
             required: true,
         },
@@ -34,11 +34,11 @@ const DataSchema = mongoose.Schema(
             type: String,
             enum:['popular','new','top','special','trending','regular']
         },
-        category_id: {
+        categoryID: {
             type: mongoose.Schema.Types.ObjectId,
             required: true,
         },
-        brand_id: {
+        brandID: {
             type: mongoose.Schema.Types.ObjectId,
             required: true,
         },

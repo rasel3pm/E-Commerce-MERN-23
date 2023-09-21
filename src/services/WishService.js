@@ -23,12 +23,17 @@ const RemoveWish = async (req) => {
         return {status:"fail", message:"Something Went Wrong"}
     }
 }
-
-const Wish = (req) => {
+const Wish = async (req) => {
   try{
-      let user_id= new Object(req.headers.id)
+      let user_id = new ObjectId(req.headers.id)
       let matchStage = {$match:{userID:user_id}}
-      let JoinStageProduct= {$lookup:{from:"products",localField:"productID",foreignField:"_id",as:"product"}}
+      let joiningStageProduct = {$lookup:{from:"products",localField:"productID",foreignField:"_id",as:"product"}}
+      let joiningStageBrand = {$lookup:{from:"brands",localField:"product.brandID",foreignField:"_id",as:"brand"}}
+      let unwindStageProduct = {$unwind:"$product"}
+      let unwindStageBrand = {$unwind:"$brand"}
+      let projectionStage = {$project:{'_id':0,'userID':0,'createdAt':0,'updatedAt':0,'product._id':0,'product.remark':0,'brand._id':0}}
+      let data = await WishModel.aggregate([matchStage,joiningStageProduct,unwindStageProduct,joiningStageBrand,unwindStageBrand,projectionStage])
+      return {status:"success", data:data}
   }catch (e) {
       return {status:"fail", message:"Something Went Wrong"}
   }

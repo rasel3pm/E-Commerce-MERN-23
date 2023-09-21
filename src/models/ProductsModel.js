@@ -16,7 +16,7 @@ const DataSchema = mongoose.Schema(
         discount: {
             type: String,
         },
-        discount_Price: {
+        discountPrice: {
             type: String
         },
         image: {
@@ -26,7 +26,7 @@ const DataSchema = mongoose.Schema(
         stock: {
             type: Boolean,
         },
-        start: {
+        star: {
             type: String,
             required: true,
         },

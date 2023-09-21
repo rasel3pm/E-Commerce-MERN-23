@@ -1,5 +1,6 @@
-const {CreateWish, RemoveWish} = require("../services/WishService");
+const {CreateWish, RemoveWish, Wish} = require("../services/WishService");
 const {ProductByRemarks, ProductBySlider, ProductByCategory, ProductByCategoryLimit10, ProductByBrand, ProductByKeyword} = require("../services/ProductService");
+const {RemoveCart, CreateCart, Cart} = require("../services/CartService");
 
 exports.SliderList = async (req, res) => {
   let result = await ProductBySlider(req)
@@ -25,31 +26,14 @@ exports.ListByKeyword = async (req, res) => {
   let result = await ProductByKeyword(req)
   return res.status(200).json(result);
 };
-
-exports.ListReview = async (req, res) => {
-  return res.status(200).json({
-    success: true,
-    message: "ListReview",
-  });
-};
-
-exports.ProductDetails = async (req, res) => {
-  return res.status(200).json({
-    success: true,
-    message: "ProductDetails",
-  });
-};
-
 exports.ListByRemark = async (req, res) => {
   let result = await ProductByRemarks(req)
   return res.status(200).json(result);
 };
 
 exports.WishList = async (req, res) => {
-  return res.status(200).json({
-    success: true,
-    message: "WishList",
-  });
+  let result = await Wish(req)
+  return res.status(200).json(result);
 };
 
 exports.CreateWishList = async (req, res) => {
@@ -63,22 +47,30 @@ exports.RemoveWishList = async (req, res) => {
 };
 
 exports.CartList = async (req, res) => {
-  return res.status(200).json({
-    success: true,
-    message: "CartList",
-  });
+  let result = Cart(req)
+  return res.status(200).json(result);
 };
 
 exports.CreateCartList = async (req, res) => {
-  return res.status(200).json({
-    success: true,
-    message: "CartList",
-  });
+  let result = CreateCart(req)
+  return res.status(200).json(result);
 };
 
 exports.RemoveCartList = async (req, res) => {
+  let result = RemoveCart(req)
+  return res.status(200).json(result);
+};
+
+exports.ListReview = async (req, res) => {
   return res.status(200).json({
     success: true,
-    message: "CartList",
+    message: "ListReview",
+  });
+};
+
+exports.ProductDetails = async (req, res) => {
+  return res.status(200).json({
+    success: true,
+    message: "ProductDetails",
   });
 };

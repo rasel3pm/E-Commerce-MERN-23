@@ -23,13 +23,13 @@ router.get("/ListReview", ProductController.ListReview);
 router.get("/ProductDetails", ProductController.ProductDetails);
 router.get("/ListByRemark/:remark", ProductController.ListByRemark);
 
-router.get("/WishList", ProductController.WishList);
-router.get("/CreateWishList", ProductController.CreateWishList);
-router.get("/RemoveWishList", ProductController.RemoveWishList);
+router.get("/WishList",AuthVerification, ProductController.WishList);
+router.post("/CreateWishList",AuthVerification, ProductController.CreateWishList);
+router.post("/RemoveWishList",AuthVerification, ProductController.RemoveWishList);
 
-router.get("/CartList", ProductController.CartList);
-router.get("/CreateCartList", ProductController.CreateCartList);
-router.get("/RemoveCartList", ProductController.RemoveCartList);
+router.get("/CartList",AuthVerification, ProductController.CartList);
+router.post("/CreateCartList",AuthVerification, ProductController.CreateCartList);
+router.post("/RemoveCartList",AuthVerification, ProductController.RemoveCartList);
 
 // // User
 router.post("/UserLogin/:email", UserController.UserLogin);

@@ -4,6 +4,7 @@ const DataSchema=mongoose.Schema({
         userID:{type:mongoose.Schema.Types.ObjectId,required:true},
 
         cus_name:{type:String,trim:true,required:true},
+            cus_email:{type:String,required:true},
         cus_add:{type:String,trim:true,required:true},
         cus_city:{type:String,trim:true,required:true},
         cus_state:{type:String,trim:true,required:true,default:'Dhaka'},

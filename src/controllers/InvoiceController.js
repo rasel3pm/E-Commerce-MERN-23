@@ -1,9 +1,12 @@
+const processInvoice = require("../services/InvoiceService")
 exports.InvoiceCreate = async (req, res) => {
-  return res.status(200).json({
-    success: true,
-    message: "InvoiceCreate",
-  });
+  let result = await processInvoice(req)
+  return res.status(200).json(result);
 };
+
+
+
+
 
 exports.InvoiceList = async (req, res) => {
   return res.status(200).json({

@@ -3,25 +3,27 @@ const ProductModel = require("../models/ProductsModel")
 const mongoose = require("mongoose");
 const ObjectId = mongoose.Types.ObjectId;
 const CreateCart = async (req) => {
-  try{
-      let user_id = req.headers.id
-      let reqBody = req.body
-      let productID = reqBody.productID
-      let product = await ProductModel.findOne({_id:productID})
-      let price = product.price
-      if (product.discount){
-          price = product.discountPrice
-      }
-      let totalPrice = price * reqBody.qty
-      reqBody.userID=user_id
-      reqBody.price=totalPrice
+    try {
+        let user_id = req.headers.id;
+        let reqBody = req.body;
+        let productID = reqBody.productID;
+        let product = await ProductModel.findOne({ _id: productID });
+        let price = product.price
 
-      await CartModel.updateOne({userID:user_id,productID:reqBody.productID},{$set:reqBody},{upsert:true})
-      return {status:"success", message:"Cart List Created"}
-  }catch (e) {
-      return {status:"fail", message:"Something Went Wrong"}
-  }
-}
+        if (! product.discount) {
+            price = product.discountPrice // Use the discounted price if available
+        }
+
+        let totalPrice = price * reqBody.qty;
+        reqBody.userID = user_id;
+        reqBody.price = totalPrice;
+
+        await CartModel.updateOne({ userID: user_id, productID: reqBody.productID }, { $set: reqBody }, { upsert: true });
+        return { status: "success", message: "Cart List Created" };
+    } catch (e) {
+        return { status: "fail", message: "Something Went Wrong" };
+    }
+};
 const RemoveCart = async (req)=>{
     try{
         let user_id=req.headers.id;

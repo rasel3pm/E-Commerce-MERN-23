@@ -40,7 +40,7 @@ const processInvoice =async (req) => {
         })
 
         //payment settings
-        // let paymentSettings = await PaymentSettingModel.find()
+        let paymentSettings = await PaymentSettingModel.find()
 
         const form = new FormData()
         form.append('store_id', 'teamr64c9e84055219');

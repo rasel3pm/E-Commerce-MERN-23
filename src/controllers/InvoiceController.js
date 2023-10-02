@@ -1,18 +1,19 @@
-const processInvoice = require("../services/InvoiceService")
+const {
+  ProcessInvoice,
+  PaymentSuccessService,
+  PaymentFailService,
+  PaymentCancel,
+  PaymentIPN,
+  InvoiceListService,
+} = require("../services/InvoiceService");
 exports.InvoiceCreate = async (req, res) => {
-  let result = await processInvoice(req)
+  let result = await ProcessInvoice(req);
   return res.status(200).json(result);
 };
 
-
-
-
-
 exports.InvoiceList = async (req, res) => {
-  return res.status(200).json({
-    success: true,
-    message: "InvoiceCreate",
-  });
+  let result = await InvoiceListService(req);
+  return res.status(200).json(result);
 };
 
 exports.InvoiceProductList = async (req, res) => {
@@ -23,29 +24,21 @@ exports.InvoiceProductList = async (req, res) => {
 };
 
 exports.PaymentSuccess = async (req, res) => {
-  return res.status(200).json({
-    success: true,
-    message: "InvoiceCreate",
-  });
+  let result = await PaymentSuccessService(req);
+  return res.status(200).json(result);
 };
 
 exports.PaymentFail = async (req, res) => {
-  return res.status(200).json({
-    success: true,
-    message: "InvoiceCreate",
-  });
+  let result = await PaymentFailService(req);
+  return res.status(200).json(result);
 };
 
 exports.PaymentCancel = async (req, res) => {
-  return res.status(200).json({
-    success: true,
-    message: "InvoiceCreate",
-  });
+  let result = await PaymentCancel(req);
+  return res.status(200).json(result);
 };
 
 exports.PaymentIPN = async (req, res) => {
-  return res.status(200).json({
-    success: true,
-    message: "InvoiceCreate",
-  });
+  let result = await PaymentIPN(req);
+  return res.status(200).json(result);
 };

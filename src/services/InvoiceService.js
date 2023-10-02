@@ -7,7 +7,7 @@ const FormData = require("form-data");
 const mongoose = require("mongoose");
 const ObjectId = mongoose.Types.ObjectId;
 
-const processInvoice = async (req) => {
+const ProcessInvoice = async (req) => {
   try {
     let user_id = new ObjectId(req.headers.id);
     let cus_email = req.headers.email;
@@ -15,7 +15,6 @@ const processInvoice = async (req) => {
       { $match: { userID: user_id } },
       { $group: { _id: 0, sum: { $sum: { $toDecimal: "$price" } } } },
     ]);
-    console.log(data);
     let payable = data[0].sum;
     let tran_id = Math.floor(100000000 + Math.random() * 900000000);
     let val_id = 0;
@@ -44,7 +43,6 @@ const processInvoice = async (req) => {
 
     //payment settings
     let paymentSetting = await PaymentSettingsModel.find();
-    console.log(paymentSetting);
 
     const form = new FormData();
     form.append("store_id", paymentSetting[0]["store_id"]);
@@ -91,5 +89,70 @@ const processInvoice = async (req) => {
     return { status: false, message: "Something went wrong", error: e };
   }
 };
+const PaymentSuccessService = async (req) => {
+  try {
+    const trxId = req.params.trxId;
+    await InvoiceModel.updateOne(
+      { tran_id: trxId },
+      { payment_status: "success" }
+    );
+    return { status: "Payment success" };
+  } catch (e) {
+    return { status: "fail", message: "Something Went Wrong" };
+  }
+};
+const PaymentFailService = async (req) => {
+  try {
+    const trxId = req.params.trxId;
+    await InvoiceModel.updateOne(
+      { tran_id: trxId },
+      { payment_status: "fail" }
+    );
+    return { status: "Payment fail" };
+  } catch (e) {
+    return { status: "fail", message: "Something Went Wrong" };
+  }
+};
+const PaymentCancelService = async (req) => {
+  try {
+    const trxId = req.params.trxId;
+    await InvoiceModel.updateOne(
+      { tran_id: trxId },
+      { payment_status: "cancel" }
+    );
+    return { status: "Payment cancel" };
+  } catch (e) {
+    return { status: "fail", message: "Something Went Wrong" };
+  }
+};
+const PaymentIPNService = async (req) => {
+  try {
+    const trxId = req.params.trxId;
+    const status = req.body["status"];
+    await InvoiceModel.updateOne(
+      { tran_id: trxId },
+      { payment_status: status }
+    );
+    return { status: "Payment fail" };
+  } catch (e) {
+    return { status: "fail", message: "Something Went Wrong" };
+  }
+};
 
-module.exports = processInvoice;
+const InvoiceListService = async (req) => {
+  try {
+    let data = await InvoiceModel.aggregate([{ $project: { _id: 0 } }]);
+    return { status: "success", data: data };
+  } catch (e) {
+    return { status: "fail", message: "Something went wrong" };
+  }
+};
+
+module.exports = {
+  ProcessInvoice,
+  PaymentSuccessService,
+  PaymentFailService,
+  PaymentCancelService,
+  PaymentIPNService,
+  InvoiceListService,
+};

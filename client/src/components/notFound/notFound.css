@@ -1,0 +1,9 @@
+.text-style{
+    background: #AF11CF;
+    background: -webkit-linear-gradient(to right, #AF11CF 26%, #596316 67%);
+    background: -moz-linear-gradient(to right, #AF11CF 26%, #596316 67%);
+    background: linear-gradient(to right, #AF11CF 26%, #596316 67%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 40px;
+}

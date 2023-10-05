@@ -22,7 +22,15 @@ export const ProductListByRemarkRequest = async (Remark)=>{
     try {
         let result = await axios.get(BASEURL+"/ListByRemark/"+Remark)
         let data = result.data['data']
-        console.log(data)
+        return data
+    }catch (e) {
+        return []
+    }
+}
+export const SliderListRequest = async ()=>{
+    try {
+        let result = await axios.get(BASEURL+"/SliderList")
+        let data = result.data['data']
         return data
     }catch (e) {
         return []

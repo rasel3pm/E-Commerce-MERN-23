@@ -32,8 +32,6 @@ const Products = () => {
         })()
 
     },[0])
-    console.log(data_new)
-
 
 
     return (
@@ -78,7 +76,7 @@ const Products = () => {
                                                         }
 
                                                         return(
-                                                            <div className="col-md-3 p-2 col-lg-3 col-sm-6 col-12">
+                                                            <div key={i} className="col-md-3 p-2 col-lg-3 col-sm-6 col-12">
                                                                 <Link to="/" className="card shadow-sm h-100 rounded-3 bg-white">
                                                                     <img className="w-100 rounded-top-2" src="https://photo.teamrabbil.com/images/2023/10/03/Apple2.png"/>
                                                                     <div className="card-body">
@@ -115,7 +113,7 @@ const Products = () => {
                                                         }
 
                                                         return(
-                                                            <div className="col-md-3 p-2 col-lg-3 col-sm-6 col-12">
+                                                            <div key={i} className="col-md-3 p-2 col-lg-3 col-sm-6 col-12">
                                                                 <Link to="/" className="card shadow-sm h-100 rounded-3 bg-white">
                                                                     <img className="w-100 rounded-top-2" src="https://photo.teamrabbil.com/images/2023/10/03/Apple2.png"/>
                                                                     <div className="card-body">
@@ -139,8 +137,6 @@ const Products = () => {
                                 </div>
 
 
-
-
                                 <div className="tab-pane fade" id="pills-popular" role="tabpanel" aria-labelledby="pills-contact-tab" tabIndex="0">
                                     <div className="container">
                                         <div className="row">
@@ -154,7 +150,7 @@ const Products = () => {
                                                         }
 
                                                         return(
-                                                            <div className="col-md-3 p-2 col-lg-3 col-sm-6 col-12">
+                                                            <div key={i} className="col-md-3 p-2 col-lg-3 col-sm-6 col-12">
                                                                 <Link to="/" className="card shadow-sm h-100 rounded-3 bg-white">
                                                                     <img className="w-100 rounded-top-2" src="https://photo.teamrabbil.com/images/2023/10/03/Apple2.png"/>
                                                                     <div className="card-body">
@@ -192,7 +188,7 @@ const Products = () => {
                                                         }
 
                                                         return(
-                                                            <div className="col-md-3 p-2 col-lg-3 col-sm-6 col-12">
+                                                            <div key={i} className="col-md-3 p-2 col-lg-3 col-sm-6 col-12">
                                                                 <Link to="/" className="card shadow-sm h-100 rounded-3 bg-white">
                                                                     <img className="w-100 rounded-top-2" src="https://photo.teamrabbil.com/images/2023/10/03/Apple2.png"/>
                                                                     <div className="card-body">
@@ -213,7 +209,6 @@ const Products = () => {
                                             }
                                         </div>
                                     </div>
-
                                 </div>
 
                                 <div className="tab-pane fade" id="pills-special" role="tabpanel" aria-labelledby="pills-disabled-tab" tabIndex="0">
@@ -230,7 +225,7 @@ const Products = () => {
                                                         }
 
                                                         return(
-                                                            <div className="col-md-3 p-2 col-lg-3 col-sm-6 col-12">
+                                                            <div key={i} className="col-md-3 p-2 col-lg-3 col-sm-6 col-12">
                                                                 <Link to="/" className="card shadow-sm h-100 rounded-3 bg-white">
                                                                     <img className="w-100 rounded-top-2" src="https://photo.teamrabbil.com/images/2023/10/03/Apple2.png"/>
                                                                     <div className="card-body">
@@ -251,11 +246,7 @@ const Products = () => {
                                             }
                                         </div>
                                     </div>
-
                                 </div>
-
-
-
                             </div>
                         </div>
                     </div>

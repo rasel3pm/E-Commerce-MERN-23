@@ -25,7 +25,7 @@ const ProcessInvoice = async (req) => {
     let Profile = await ProfileModel.aggregate([
       { $match: { userID: user_id } },
     ]);
-    // Customer Shipping Details
+    // Customer Shipping details
     let cus_details = `Name: ${Profile[0].cus_name},Email ${cus_email}, Address: ${Profile[0].cus_add}, Phone: ${Profile[0].cus_phone}`;
     let ship_details = `Name: ${Profile[0].ship_name}, City: ${Profile[0].ship_city}, Address: ${Profile[0].ship_add}, Phone: ${Profile[0].ship_phone}`;
 

@@ -7,5 +7,10 @@ exports.UserLogin=async (req,res)=>{
 
 exports.VerifyLogin=async (req,res)=>{
   let result=  await UserVerify(req)
-  return res.status(200).json(result)
+  if(result['status']==='success'){
+    res.cookie("token",result['token'])
+    return res.status(200).json(result)
+  }else {
+    return res.status(200).json(result)
+  }
 }

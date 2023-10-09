@@ -20,7 +20,8 @@ router.get("/ListBySmilier/:categoryID", ProductController.ListBySmilier);
 router.get("/ListByBrand/:brandID", ProductController.ListByBrand);
 router.get("/ListByKeyword/:keyword", ProductController.ListByKeyword);
 router.get("/ListReview", ProductController.ListReview);
-router.get("/ProductDetails", ProductController.ProductDetails);
+router.get("/ProductDetails/:id", ProductController.ProductDetails);
+// router.post("/ProductDetails", ProductController.CreateProductDetails);
 router.get("/ListByRemark/:remark", ProductController.ListByRemark);
 
 router.get("/WishList", AuthVerification, ProductController.WishList);

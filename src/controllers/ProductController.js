@@ -1,6 +1,9 @@
 const {CreateWish, RemoveWish, Wish} = require("../services/WishService");
-const {ProductByRemarks, ProductBySlider, ProductByCategory, ProductByCategoryLimit10, ProductByBrand, ProductByKeyword} = require("../services/ProductService");
+const {ProductByRemarks, ProductBySlider, ProductByCategory, ProductByCategoryLimit10, ProductByBrand, ProductByKeyword,
+  DetailsById
+} = require("../services/ProductService");
 const {RemoveCart, CreateCart, Cart} = require("../services/CartService");
+const ProductDetailModel = require("../models/ProductDetailsModel")
 
 exports.SliderList = async (req, res) => {
   let result = await ProductBySlider(req)
@@ -47,17 +50,17 @@ exports.RemoveWishList = async (req, res) => {
 };
 
 exports.CartList = async (req, res) => {
-  let result = Cart(req)
+  let result = await Cart(req)
   return res.status(200).json(result);
 };
 
 exports.CreateCartList = async (req, res) => {
-  let result = CreateCart(req)
+  let result = await CreateCart(req)
   return res.status(200).json(result);
 };
 
 exports.RemoveCartList = async (req, res) => {
-  let result = RemoveCart(req)
+  let result = await RemoveCart(req)
   return res.status(200).json(result);
 };
 
@@ -69,8 +72,12 @@ exports.ListReview = async (req, res) => {
 };
 
 exports.ProductDetails = async (req, res) => {
-  return res.status(200).json({
-    success: true,
-    message: "ProductDetails",
-  });
+  let result = await DetailsById(req)
+  return res.status(200).json(result);
 };
+
+exports.CreateProductDetails = async (req,res)=>{
+  let reqBody = req.body
+  let data = await ProductDetailModel.create(reqBody)
+  res.status(200).json({status:"success",data:data})
+}

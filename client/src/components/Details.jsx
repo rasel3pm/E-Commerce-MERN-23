@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {CreateCartListRequest, DetailsListRequest} from "../apiRequest/ApiRequest.js";
+import {CreateCartListRequest, CreateWishListRequest, DetailsListRequest} from "../apiRequest/ApiRequest.js";
 import {useParams} from "react-router-dom";
 import SmilierProduct from "./details/SmilierProduct.jsx";
 import Brands from "./Brands.jsx";
@@ -72,12 +72,7 @@ const Details = () => {
     }
 
     const AddWish =async () => {
-        let res =await CreateWishListRequest(id);
-        if(res['status']==="success"){
-            toast.success(res['message'])
-        }else{
-            toast.error(res['message'])
-        }
+        await CreateWishListRequest(id)
     }
 
     return (

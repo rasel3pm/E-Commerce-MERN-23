@@ -1,4 +1,5 @@
 import axios from "axios"
+import unauthorized from "../utility/unauthorized.js";
 const BASEURL = "";
 export const BrandListRequest = async ()=>{
     try {
@@ -58,6 +59,19 @@ export  async function ListBySmilierRequest(categoryID) {
         return [];
     }
 }
+export  async function CreateWishListRequest(productID) {
+    try {
+        let URL = BASEURL+'/api/v1/CreateWishList'
+        let reqBody = {"productID":productID}
+        let result = await axios.post(URL,reqBody);
+        let data = result.data
+        return data;
+    }
+    catch (e) {
+        unauthorized(e.response.status);
+        return [];
+    }
+}
 export  async function CreateCartListRequest(reqBody) {
     try {
         let URL = BASEURL+'/api/v1/CreateCartList/'
@@ -68,6 +82,17 @@ export  async function CreateCartListRequest(reqBody) {
     catch (e) {
         unauthorized(e.response.status);
         return [];
+    }
+}
+export  async function UserLoginRequest(email) {
+    try {
+        let URL = BASEURL+'/api/v1/UserLogin/'+email
+        let result=await axios.post(URL);
+        let data = result.data
+        return data;
+    }
+    catch (e) {
+       return false
     }
 }
 

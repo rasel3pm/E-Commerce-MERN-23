@@ -2,7 +2,6 @@ const CategoryModel = require("../models/CategoryModel")
 const BrandModel = require("../models/BrandModel")
 const ProductsModel = require("../models/ProductsModel")
 const ProductSliderModel = require("../models/ProductSliederModel")
-const ProductDetailsModel = require("../models/ProductDetailsModel")
 const mongoose = require("mongoose")
 const ObjectId = mongoose.Types.ObjectId
 

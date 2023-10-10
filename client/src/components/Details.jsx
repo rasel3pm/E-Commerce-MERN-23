@@ -8,15 +8,12 @@ import Specifications from "./details/Specifications.jsx";
 import Review from "./details/Review.jsx";
 import toast, {Toaster} from "react-hot-toast";
 const Details = () => {
-
     let {id}=useParams()
-
     const [data,setData]=useState([]);
     const [images,setImages]=useState([])
     const [color,setColor]=useState([]);
     const [size,setSize]=useState([]);
     const [quantity, setQuantity] = useState(1);
-
     const [cartData, setCartData] = useState({productID:id, qty:1, color:"", size:""});
 
     const inputOnChange = (name,value) => {
@@ -27,7 +24,6 @@ const Details = () => {
     }
 
     useEffect(()=>{
-
         (async () => {
             let result= await DetailsListRequest(id);
             setData(result);
@@ -42,16 +38,12 @@ const Details = () => {
                 {original:result[0]['details']['img7'],thumbnail:result[0]['details']['img7']},
                 {original:result[0]['details']['img8'],thumbnail:result[0]['details']['img8']},
             ])
-
             const colorArray = result[0]['details']['color'].split(",");
             setColor(colorArray);
 
             const sizeArray = result[0]['details']['size'].split(",");
             setSize(sizeArray);
-
-
         })()
-
     },[0])
     const incrementQuantity = () => {
         setQuantity(quantity => quantity + 1);

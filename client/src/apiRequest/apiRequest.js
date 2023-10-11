@@ -96,3 +96,15 @@ export  async function UserLoginRequest(email) {
     }
 }
 
+export  async function UserVerifyRequest(email,code) {
+    try {
+        let URL = BASEURL+'/api/v1/VerifyLogin/'+email+"/"+code
+        let result=await axios.post(URL);
+        let data = result.data
+        return data;
+    }
+    catch (e) {
+        return false
+    }
+}
+

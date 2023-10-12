@@ -1,5 +1,5 @@
-export default function unauthorized(error){
-    if(error===401){
+export default function unauthorized(code){
+    if(code===401){
         sessionStorage.clear()
         localStorage.clear()
         //last location

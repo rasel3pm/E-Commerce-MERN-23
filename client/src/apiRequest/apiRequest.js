@@ -59,19 +59,18 @@ export  async function ListBySmilierRequest(categoryID) {
         return [];
     }
 }
-export  async function CreateWishListRequest(productID) {
+export async function CreateWishListRequest(productID) {
     try {
-        let URL = BASEURL+'/api/v1/CreateWishList'
-        let reqBody = {"productID":productID}
-        let result = await axios.post(URL,reqBody);
-        let data = result.data
+        const URL = BASEURL + '/api/v1/CreateWishList';
+        const reqBody = { "productID": productID };
+        const result = await axios.post(URL, reqBody);
+        const data = result.data;
         return data;
-    }
-    catch (e) {
+    } catch (e) {
         unauthorized(e.response.status);
-        return [];
     }
 }
+
 export  async function CreateCartListRequest(reqBody) {
     try {
         let URL = BASEURL+'/api/v1/CreateCartList/'

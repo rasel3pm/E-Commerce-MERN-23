@@ -35,6 +35,7 @@ const Verify = () => {
                     </div>
                 </div>
             </div>
+            <Toaster position={"bottom-center"} />
         </div>
     );
 };

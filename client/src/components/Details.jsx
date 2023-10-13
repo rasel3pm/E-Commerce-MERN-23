@@ -73,10 +73,10 @@ const Details = () => {
 
     const AddWish =async () => {
         let res = await CreateWishListRequest(id)
-        if(res['status']==="success"){
+        if(res['status']=== "success"){
             toast.success(res['message'])
         }else{
-            toast.error(res['message'])
+            toast.error("Something went wrong")
         }
     }
 

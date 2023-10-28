@@ -22,7 +22,7 @@ const Details = () => {
             [name]:value
         }))
     }
-
+console.log(quantity)
     useEffect(()=>{
         (async () => {
             let result= await DetailsListRequest(id);

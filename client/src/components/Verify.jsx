@@ -3,6 +3,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { UserVerifyRequest } from "../apiRequest/apiRequest.js";
 import { useParams } from "react-router-dom";
 import SubmitButton from "./SubmitButton.jsx";
+import OtpInput from "react-otp-input";
 const Verify = () => {
   const [code, setCode] = useState("");
   const [BtnLoader, SetBtnLoader] = useState(false);
@@ -23,25 +24,46 @@ const Verify = () => {
       }
     }
   };
+  const renderInput = (inputProps, i) => (
+    <input
+      {...inputProps}
+      key={i}
+      className="form-control"
+      style={{
+        width: "3rem",
+        height: "3rem",
+        margin: "0 0.5rem",
+        textAlign: "center",
+        fontSize: "30px",
+      }}
+    />
+  );
+  console.log(code);
   return (
     <div className="container section">
       <div className="row d-flex justify-content-center">
-        <div className="col-md-5">
-          <div className="card bg-light">
+        <div className="col-md-6">
+          <div className="card shadow border p-5">
             <div className="card-body">
               <form>
-                <label className="form-label my-2">
-                  Your Verification Code
-                </label>
-                <input
+                <label className="form-label my-2">Verification Code</label>
+                <OtpInput
+                  numInputs={6}
+                  isInputNum={true}
+                  separator={<span>-</span>}
                   value={code}
-                  onChange={(e) => {
-                    setCode(e.target.value);
-                  }}
-                  type="text"
-                  className="form-control"
+                  onChange={setCode}
+                  inputStyle="inputStyle"
+                  containerStyle="containerStyle"
+                  inputClassName="inputClassName"
+                  shouldAutoFocus
+                  isInputSecure
+                  hasErrored
+                  errorStyle="errorStyle"
+                  onChange={(otp) => setCode(otp)}
+                  renderInput={renderInput}
                 />
-                {/* <button onClick={verifyCode} className="btn my-3 btn-success w-100">Verify</button> */}
+
                 <SubmitButton
                   text="Verify"
                   submit={BtnLoader}

@@ -5,6 +5,9 @@ import ProductDetailsPage from "./pages/ProductDetailsPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import VerifyPage from "./pages/VerifyPage.jsx";
 import WishPage from "./pages/WishPage";
+import CartListPage from "./pages/CartListPage";
+import ProductByBrand from "./pages/ProductByBrandPage.jsx";
+import ProductByCategory from "./pages/ProductByCategoryPage.jsx";
 const App = () => {
   return (
     <>
@@ -15,6 +18,12 @@ const App = () => {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/verify/:email" element={<VerifyPage />} />
           <Route path="/wish" element={<WishPage />} />
+          <Route path="/cart" element={<CartListPage />} />
+          <Route path="/product-by-brand/:brand" element={<ProductByBrand />} />
+          <Route
+            path="/product-by-category/:category"
+            element={<ProductByCategory />}
+          />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>

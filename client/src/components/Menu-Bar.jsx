@@ -69,7 +69,8 @@ const MenuBar = () => {
                 </svg>
               </button>
             </div>
-            <button
+            <Link
+              to="/cart"
               type="button"
               className="btn ms-3 btn-outline-success position-relative"
             >
@@ -77,7 +78,7 @@ const MenuBar = () => {
               <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
                 02
               </span>
-            </button>
+            </Link>
             <Link to="/wish" type="button" className="btn ms-3 btn-dark d-flex">
               <i className="bi bi-heart"></i>
             </Link>

@@ -135,3 +135,87 @@ export async function ListByBrandRequest(brandID) {
     return [];
   }
 }
+export async function CartListRequest() {
+  try {
+    let URL = BASEURL + "/api/v1/CartList";
+    let result = await axios.get(URL);
+    let data = result.data;
+    return data["data"];
+  } catch (e) {
+    unauthorized(e.response.status);
+    return [];
+  }
+}
+export async function RemoveCartListRequest(productID) {
+  try {
+    let URL = BASEURL + "/api/v1/RemoveCartList";
+    let result = await axios.post(URL, { productID: productID });
+    let data = result.data;
+    return data;
+  } catch (e) {
+    unauthorized(e.response.status);
+    return [];
+  }
+}
+export async function InvoiceRequest() {
+  try {
+    let URL = BASEURL + "/api/v1/InvoiceCreate";
+    let result = await axios.post(URL);
+    let data = result.data;
+    return data["message"]["desc"];
+  } catch (e) {
+    unauthorized(e.response.status);
+    return [];
+  }
+}
+export async function ListByCategoryRequest(CategoryID) {
+  try {
+    let URL = BASEURL + "/api/v1/ListByCategory/" + CategoryID;
+    let result = await axios.get(URL);
+    let data = result.data;
+    return data["data"];
+  } catch (e) {
+    return [];
+  }
+}
+
+export async function ListByKeywordRequest(Keyword) {
+  try {
+    let URL = BASEURL + "/api/v1/ListByKeyword/" + Keyword;
+    let result = await axios.get(URL);
+    let data = result.data;
+    return data["data"];
+  } catch (e) {
+    return [];
+  }
+}
+export async function UserLogout() {
+  try {
+    let URL = BASEURL + "/api/v1/UserLogout";
+    let result = await axios.get(URL);
+    if (result.data["status"] === "success") return true;
+  } catch (e) {
+    unauthorized(e.response.status);
+    return false;
+  }
+}
+export async function ProductByBrandRequest(brand) {
+  try {
+    let URL = BASEURL + "/api/v1/ListByBrand/" + brand;
+    let result = await axios.get(URL);
+    let data = result.data;
+    return data["data"];
+  } catch (e) {
+    return [];
+  }
+}
+export async function ProductByCategoryRequest(category) {
+  try {
+    let URL = BASEURL + "/api/v1/ListByCategory/" + category;
+    let result = await axios.get(URL);
+    let data = result.data;
+    return data["data"];
+  } catch (e) {
+    return [];
+  }
+}

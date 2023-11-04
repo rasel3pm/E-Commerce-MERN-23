@@ -42,7 +42,7 @@ router.get("/UserLogout",UserController.UserLogout);
 // // Profile
 router.post("/CreateProfile", AuthVerification, ProfileController.CreateProfile);
 router.get("/ReadProfile", AuthVerification, ProfileController.ReadProfile);
-router.get("/UpdateProfile", AuthVerification, ProfileController.UpdateProfile);
+router.post("/UpdateProfile", AuthVerification, ProfileController.UpdateProfile);
 
 // // Invoice
 router.post("/InvoiceCreate", AuthVerification, InvoiceController.InvoiceCreate);

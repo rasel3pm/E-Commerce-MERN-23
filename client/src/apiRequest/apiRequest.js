@@ -239,3 +239,16 @@ export async function SuggestionProductsRequest() {
     return [];
   }
 }
+export async function UpdateProfileRequest({...formData}) {
+  try {
+    let URL = BASEURL + "/api/v1/UpdateProfile";
+    // let postBody={name,email,phone}
+    let result = await axios.post(URL,formData);
+    console.log(result.data)
+    let data = result.data;
+    return data
+  } catch (e) {
+    unauthorized(e.response.status)
+    return [];
+  }
+}

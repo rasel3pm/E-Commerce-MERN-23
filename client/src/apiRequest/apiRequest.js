@@ -219,3 +219,23 @@ export async function ProductByCategoryRequest(category) {
     return [];
   }
 }
+export async function ProductBySearchRequest(keyword) {
+  try {
+    let URL = BASEURL + "/api/v1/ListByKeyword/" + keyword;
+    let result = await axios.get(URL);
+    let data = result.data;
+    return data["data"];
+  } catch (e) {
+    return [];
+  }
+}
+export async function SuggestionProductsRequest() {
+  try {
+    let URL = BASEURL + "/api/v1/SuggestionProducts/";
+    let result = await axios.get(URL);
+    let data = result.data;
+    return data["data"];
+  } catch (e) {
+    return [];
+  }
+}

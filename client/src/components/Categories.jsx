@@ -10,7 +10,7 @@ const Categories = () => {
       let result = await CategoryListRequest();
       setData(result);
     })();
-  }, [0]);
+  }, []);
 
   return (
     <div className="section">

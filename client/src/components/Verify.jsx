@@ -17,8 +17,14 @@ const Verify = () => {
       let res = await UserVerifyRequest(email, code);
       SetBtnLoader(false);
       if (res["status"] === "success") {
-        toast.success("success");
-        window.location.href = sessionStorage.getItem("lastLocation");
+        toast.success("success")
+        localStorage.setItem("login","1")
+        if(sessionStorage.getItem("lastLocation") !== null){
+          window.location.href = sessionStorage.getItem("lastLocation");
+        }else {
+          window.location.href="/"
+        }
+
       } else {
         toast.error(res["message"]);
       }
@@ -38,7 +44,6 @@ const Verify = () => {
       }}
     />
   );
-  console.log(code);
   return (
     <div className="container section">
       <div className="row d-flex justify-content-center">

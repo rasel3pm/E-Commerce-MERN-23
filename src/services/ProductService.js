@@ -131,7 +131,14 @@ const DetailsById = async (req) => {
       return {status:"fail", data:e.toString()}
   }
 }
-
+const SuggestionProducts = async ()=>{
+    try {
+        let data = await ProductsModel.find({},{_id:0,image:0,price:0,discount:0,discountPrice:0,star:0,stock:0,remark:0,categoryID:0,brandID:0})
+        return {status:"Success",data:data}
+    }catch (e){
+        return {status:"fail",message:"Something went wrong",error:e}
+    }
+}
 
 module.exports={
     AllCategory,
@@ -142,5 +149,6 @@ module.exports={
     ProductByCategoryLimit10,
     ProductBySlider,
     ProductByKeyword,
-    DetailsById
+    DetailsById,
+    SuggestionProducts
 }

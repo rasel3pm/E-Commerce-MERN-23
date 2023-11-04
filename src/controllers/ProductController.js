@@ -1,6 +1,6 @@
 const {CreateWish, RemoveWish, Wish} = require("../services/WishService");
 const {ProductByRemarks, ProductBySlider, ProductByCategory, ProductByCategoryLimit10, ProductByBrand, ProductByKeyword,
-  DetailsById
+  DetailsById, SuggestionProducts
 } = require("../services/ProductService");
 const {RemoveCart, CreateCart, Cart} = require("../services/CartService");
 const ProductDetailModel = require("../models/ProductDetailsModel")
@@ -80,4 +80,8 @@ exports.CreateProductDetails = async (req,res)=>{
   let reqBody = req.body
   let data = await ProductDetailModel.create(reqBody)
   res.status(200).json({status:"success",data:data})
+}
+exports.AllProductsList = async (req,res)=>{
+  let result = await SuggestionProducts()
+  return res.status(200).json(result)
 }
